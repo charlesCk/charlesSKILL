@@ -4,6 +4,7 @@
 
 - `facebook`
 - `小红书`
+- `appstore`
 
 后续新增平台统一放在仓库根目录下面，例如：
 
@@ -11,7 +12,67 @@
 ./
 ├── facebook/
 ├── 小红书/
+├── appstore/
 └── 后续平台/
+```
+
+## App Store Opinion Crawler
+
+`appstore-opinion-crawler` 用于 Apple App Store / iTunes 用户评论采集，适合品牌 App、课程 App、教育产品 App 的评分评论抓取和 Excel 汇总。
+
+### 主要作用
+
+- 通过 Apple Search API 查询产品 App ID。
+- 通过 Apple iTunes RSS Customer Reviews 按国家/地区抓取评论。
+- 支持中国大陆、美国、港澳台、新加坡、澳洲、加拿大、英国等地区。
+- 保存每个 App/地区的原始 JSON，便于复核和重建。
+- 处理 Apple RSS 偶发空结果，支持配置本地原始文件兜底。
+- 对评论去重、标记有效性、情绪和主题。
+- 评论明细按更新时间由近到远排序。
+- 产出 Excel：评论明细、有效评论、应用地区汇总、抓取源记录、评论总结。
+
+### 什么时候使用
+
+当用户提出类似需求时，应使用这个 Skill：
+
+- “把我司产品的 App Store 评论爬下来。”
+- “App Store 评论按时间由近到远整理好。”
+- “抓 iOS 应用在不同国家地区的用户评论。”
+- “导出 App Store 评论 Excel，并保留评分、版本、地区和评论内容。”
+
+### Skill 位置
+
+```text
+appstore/SKILL.md
+appstore/scripts/appstore_reviews_workbook.mjs
+appstore/references/appstore-rss-playbook.md
+appstore/agents/openai.yaml
+```
+
+### 基本流程
+
+1. 查询 App ID：
+
+```text
+https://itunes.apple.com/search?term=VIPTHINK&entity=software&limit=10&country=us
+```
+
+2. 准备配置文件，写入目标 App、地区和输出路径。
+
+3. 运行采集导出脚本：
+
+```bash
+node appstore/scripts/appstore_reviews_workbook.mjs config.json
+```
+
+4. 输出 Excel 默认包含：
+
+```text
+AppStore评论明细
+有效评论明细
+应用地区汇总
+抓取源记录
+评论总结
 ```
 
 ## Xiaohongshu Opinion Crawler

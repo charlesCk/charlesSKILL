@@ -1,0 +1,4 @@
+interface:
+  display_name: "App Store Opinion Crawler"
+  short_description: "Collect App Store reviews"
+  default_prompt: "Use $appstore-opinion-crawler to collect App Store reviews for a product, sort them newest first, and build a spreadsheet summary."
