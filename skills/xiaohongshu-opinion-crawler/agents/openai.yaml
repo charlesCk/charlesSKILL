@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiaohongshu Opinion Crawler"
+  short_description: "Collect overseas Xiaohongshu comments"
+  default_prompt: "Use $xiaohongshu-opinion-crawler to collect Xiaohongshu comments for a brand or course, prioritize overseas/HK/TW/Macau signals, and produce spreadsheet-ready evidence."
