@@ -1,0 +1,3 @@
+display_name: Facebook Opinion Crawler
+short_description: Collect Facebook comments with OpenCLI.
+default_prompt: Use this skill to collect Facebook public-opinion comments for a brand, product, or campaign with OpenCLI. Search for relevant posts, expand hidden comments, extract DOM and GraphQL evidence, deduplicate rows, classify comments, and produce a spreadsheet-ready dataset.
