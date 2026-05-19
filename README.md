@@ -2,13 +2,13 @@
 
 这个仓库封装了用于社交平台舆论评论采集的 Codex Skills，目前包含：
 
-- `charlesSKILL/facebook`
-- `charlesSKILL/小红书`
+- `facebook`
+- `小红书`
 
-后续新增平台统一放在 `charlesSKILL/` 下面，例如：
+后续新增平台统一放在仓库根目录下面，例如：
 
 ```text
-charlesSKILL/
+./
 ├── facebook/
 ├── 小红书/
 └── 后续平台/
@@ -56,10 +56,10 @@ OPENCLI_BROWSER_COMMAND_TIMEOUT=180
 ### Skill 位置
 
 ```text
-charlesSKILL/小红书/SKILL.md
-charlesSKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs
-charlesSKILL/小红书/references/xiaohongshu-opencli-playbook.md
-charlesSKILL/小红书/agents/openai.yaml
+小红书/SKILL.md
+小红书/scripts/opencli_xiaohongshu_collect_comments.mjs
+小红书/references/xiaohongshu-opencli-playbook.md
+小红书/agents/openai.yaml
 ```
 
 ### 基本流程
@@ -81,7 +81,7 @@ opencli xiaohongshu comments '<带 xsec_token 的完整笔记链接>' --limit 50
 3. 或使用封装脚本批量采集：
 
 ```bash
-node charlesSKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs config.json
+node 小红书/scripts/opencli_xiaohongshu_collect_comments.mjs config.json
 ```
 
 4. 将原始 JSON 汇总为 Excel，建议包含：
@@ -143,15 +143,15 @@ OPENCLI_BROWSER_COMMAND_TIMEOUT=180
 核心 Skill 文件在：
 
 ```text
-charlesSKILL/facebook/SKILL.md
+facebook/SKILL.md
 ```
 
 辅助文件：
 
 ```text
-charlesSKILL/facebook/scripts/opencli_facebook_expand_comments.mjs
-charlesSKILL/facebook/references/facebook-opencli-playbook.md
-charlesSKILL/facebook/agents/openai.yaml
+facebook/scripts/opencli_facebook_expand_comments.mjs
+facebook/references/facebook-opencli-playbook.md
+facebook/agents/openai.yaml
 ```
 
 ### 基本流程
@@ -168,7 +168,7 @@ opencli facebook search 'VIP THINK 品牌合作' --limit 50 -f json > search_bra
 3. 对评论数缺口大的帖子执行隐藏评论展开：
 
 ```bash
-node charlesSKILL/facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
+node facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
 ```
 
 4. 将提取结果汇总到 Excel：
@@ -196,7 +196,7 @@ node charlesSKILL/facebook/scripts/opencli_facebook_expand_comments.mjs targets.
 运行：
 
 ```bash
-node charlesSKILL/facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
+node facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
 ```
 
 脚本会自动：

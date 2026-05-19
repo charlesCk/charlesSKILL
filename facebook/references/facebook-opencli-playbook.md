@@ -65,7 +65,7 @@ opencli browser "$SESSION" wait time 8
 
 If refs are hard to parse manually, run:
 ```bash
-node charlesSKILL/facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
+node facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
 ```
 
 ## GraphQL Confirmation

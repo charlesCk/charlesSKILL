@@ -65,7 +65,7 @@ Input JSON:
 
 Run:
 ```bash
-node charlesSKILL/facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
+node facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
 ```
 
 The script writes one JSON file per target, plus `state_*.txt` and `net_*.json` trace files next to the output.
