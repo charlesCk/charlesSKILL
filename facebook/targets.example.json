@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "brand-post-YYYYMMDD",
+    "url": "https://www.facebook.com/example/posts/123456789",
+    "outFile": "data/facebook_expanded/comments_brand_post_YYYYMMDD.json",
+    "maxRounds": 8,
+    "initialWaitSeconds": 8,
+    "afterClickWaitSeconds": 7,
+    "clicksPerRound": 1
+  }
+]

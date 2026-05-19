@@ -1,0 +1,13 @@
+{
+  "baseDir": "/absolute/workspace",
+  "outDir": "data/xiaohongshu_topic_YYYYMMDD",
+  "queries": [
+    "品牌名 香港",
+    "品牌名 海外",
+    "产品名 评价"
+  ],
+  "maxLeads": 120,
+  "searchLimit": 50,
+  "commentLimit": 50,
+  "existingProgressFiles": []
+}

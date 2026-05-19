@@ -1,297 +1,132 @@
-# 舆论评论采集 Skills
+# charlesSKILL
 
-这个仓库封装了用于社交平台舆论评论采集的 Codex Skills，目前包含：
+面向业务舆情与用户反馈采集的 Codex Skill 仓库。
 
-- `facebook`
-- `小红书`
-- `appstore`
+本仓库沉淀三类可复用能力：Facebook 舆论评论采集、小红书舆论评论采集、App Store 评论采集。目标不是把原始数据堆到 GitHub，而是把可复用的采集流程、字段规则、去重逻辑、限制说明和交付物规范整理成团队可以复用的 Skill。
 
-后续新增平台统一放在仓库根目录下面，例如：
+## 业务价值
 
-```text
-./
-├── facebook/
-├── 小红书/
-├── appstore/
-└── 后续平台/
-```
+这些 Skill 主要服务以下场景：
 
-## App Store Opinion Crawler
+- 评估品牌、课程、App 或投放活动在公开平台上的用户反馈。
+- 快速汇总 Facebook、小红书、App Store 的评论明细和可复盘证据。
+- 为市场、投放、商务、产品和教学团队提供结构化舆情素材。
+- 把一次性人工搜索和复制，沉淀成可重复运行、可审计、可交接的工作流。
 
-`appstore-opinion-crawler` 用于 Apple App Store / iTunes 用户评论采集，适合品牌 App、课程 App、教育产品 App 的评分评论抓取和 Excel 汇总。
+## 仓库地图
 
-### 主要作用
+| Skill | 适用平台 | 核心产出 | 入口 |
+| --- | --- | --- | --- |
+| Facebook Opinion Crawler | Facebook 帖子、视频、Reels、主页、小组讨论 | 评论明细、有效评论、线索清单、限制说明 | [`facebook/SKILL.md`](./facebook/SKILL.md) |
+| Xiaohongshu Opinion Crawler | 小红书 / Rednote 笔记和评论 | 全量评论、非大陆有效评论、产品课程相关评论、笔记线索 | [`小红书/SKILL.md`](./小红书/SKILL.md) |
+| App Store Opinion Crawler | Apple App Store / iTunes RSS | App Store 评论明细、地区汇总、抓取源记录、评论总结 | [`appstore/SKILL.md`](./appstore/SKILL.md) |
 
-- 通过 Apple Search API 查询产品 App ID。
-- 通过 Apple iTunes RSS Customer Reviews 按国家/地区抓取评论。
-- 支持中国大陆、美国、港澳台、新加坡、澳洲、加拿大、英国等地区。
-- 保存每个 App/地区的原始 JSON，便于复核和重建。
-- 处理 Apple RSS 偶发空结果，支持配置本地原始文件兜底。
-- 对评论去重、标记有效性、情绪和主题。
-- 评论明细按更新时间由近到远排序。
-- 产出 Excel：评论明细、有效评论、应用地区汇总、抓取源记录、评论总结。
-
-### 什么时候使用
-
-当用户提出类似需求时，应使用这个 Skill：
-
-- “把我司产品的 App Store 评论爬下来。”
-- “App Store 评论按时间由近到远整理好。”
-- “抓 iOS 应用在不同国家地区的用户评论。”
-- “导出 App Store 评论 Excel，并保留评分、版本、地区和评论内容。”
-
-### Skill 位置
+## 目录结构
 
 ```text
-appstore/SKILL.md
-appstore/scripts/appstore_reviews_workbook.mjs
-appstore/references/appstore-rss-playbook.md
-appstore/agents/openai.yaml
+charlesSKILL/
+  README.md
+  SECURITY.md
+  docs/
+    QUALITY_REVIEW.md
+  facebook/
+    targets.example.json
+    SKILL.md
+    agents/openai.yaml
+    references/facebook-opencli-playbook.md
+    scripts/opencli_facebook_expand_comments.mjs
+  小红书/
+    config.example.json
+    SKILL.md
+    agents/openai.yaml
+    references/xiaohongshu-opencli-playbook.md
+    scripts/opencli_xiaohongshu_collect_comments.mjs
+  appstore/
+    config.example.json
+    SKILL.md
+    agents/openai.yaml
+    references/appstore-rss-playbook.md
+    scripts/appstore_reviews_workbook.mjs
 ```
 
-### 基本流程
+## 使用前提
 
-1. 查询 App ID：
+不同平台依赖不同能力：
 
-```text
-https://itunes.apple.com/search?term=VIPTHINK&entity=software&limit=10&country=us
-```
+- Facebook / 小红书：需要本机可运行 `opencli`，Chrome 已登录对应平台账号，并连接 OpenCLI Browser Bridge。
+- App Store：使用 Apple 公开 Search API 和 iTunes RSS，不依赖登录态。
+- Excel 交付：建议结合本地 Node.js / 表格处理工具生成 `.xlsx`，不要把真实导出的工作簿直接提交到仓库。
 
-2. 准备配置文件，写入目标 App、地区和输出路径。
-
-3. 运行采集导出脚本：
-
-```bash
-node appstore/scripts/appstore_reviews_workbook.mjs config.json
-```
-
-4. 输出 Excel 默认包含：
-
-```text
-AppStore评论明细
-有效评论明细
-应用地区汇总
-抓取源记录
-评论总结
-```
-
-## Xiaohongshu Opinion Crawler
-
-`xiaohongshu-opinion-crawler` 用于小红书/Rednote 舆论评论采集，特别适合品牌、教育产品、线上课程、港澳台投放、海外华人家长社区等场景。
-
-### 主要作用
-
-- 使用 OpenCLI 后台模式搜索小红书笔记，不影响用户正常使用电脑。
-- 从品牌词、产品词、课程词、地区词和风险词扩展线索。
-- 抓取笔记详情、一级评论和楼中楼回复。
-- 对评论去重、过滤无效短回复、识别明显噪音。
-- 标记非大陆相关依据，例如评论地区字段、评论正文、笔记/搜索语境。
-- 标记产品/课程相关依据，例如品牌直提及、豌豆系列词、数学思维/线上课泛词。
-- 按日期从最近到最远排序明细。
-- 产出适合 Excel 汇总的数据结构：全量、非大陆有效、产品课程有效、产品非大陆有效、笔记线索、评论总结。
-
-### 什么时候使用
-
-当用户提出类似需求时，应使用这个 Skill：
-
-- “开始爬小红书平台相关产品评论。”
-- “需要非大陆的小红书评论，整理成 Excel。”
-- “把小红书评论按日期从最近到最远排序。”
-- “抓取豌豆思维/VIPTHINK/线上数学课/数学思维课相关小红书舆情。”
-- “需要记录哪些评论来自港澳台、海外华人、美国、澳洲、加拿大、新加坡等语境。”
-
-### 使用前提
-
-需要满足以下条件：
-
-- 本机已安装并可运行 `opencli`。
-- Chrome 已登录小红书账号。
-- OpenCLI Browser Bridge 扩展已连接。
-- 采集时建议使用：
+常用后台采集环境变量：
 
 ```bash
 OPENCLI_WINDOW=background
 OPENCLI_BROWSER_COMMAND_TIMEOUT=180
 ```
 
-### Skill 位置
+说明：部分 OpenCLI 版本没有 `--headless` 参数。当前更稳妥的低打扰方式是 `OPENCLI_WINDOW=background`。
 
-```text
-小红书/SKILL.md
-小红书/scripts/opencli_xiaohongshu_collect_comments.mjs
-小红书/references/xiaohongshu-opencli-playbook.md
-小红书/agents/openai.yaml
-```
+## 快速使用
 
-### 基本流程
-
-1. 使用品牌词、课程词、地区词搜索小红书：
+### Facebook 评论采集
 
 ```bash
-OPENCLI_WINDOW=background OPENCLI_BROWSER_COMMAND_TIMEOUT=180 \
-opencli xiaohongshu search '豌豆思维 香港' --limit 50 --window background -f json
+node facebook/scripts/opencli_facebook_expand_comments.mjs facebook/targets.example.json
 ```
 
-2. 抓取笔记详情和评论：
+输入示例见 [`facebook/SKILL.md`](./facebook/SKILL.md)。适合已有 Facebook 帖子 URL，需要尽量展开隐藏评论的任务。
+
+### 小红书评论采集
 
 ```bash
-opencli xiaohongshu note '<带 xsec_token 的完整笔记链接>' -f json --window background
-opencli xiaohongshu comments '<带 xsec_token 的完整笔记链接>' --limit 50 --with-replies true -f json --window background
+node 小红书/scripts/opencli_xiaohongshu_collect_comments.mjs 小红书/config.example.json
 ```
 
-3. 或使用封装脚本批量采集：
+输入配置见 [`小红书/SKILL.md`](./小红书/SKILL.md)。适合从品牌词、课程词、地区词批量扩展笔记线索。
+
+### App Store 评论采集
 
 ```bash
-node 小红书/scripts/opencli_xiaohongshu_collect_comments.mjs config.json
+node appstore/scripts/appstore_reviews_workbook.mjs appstore/config.example.json
 ```
 
-4. 将原始 JSON 汇总为 Excel，建议包含：
+输入配置见 [`appstore/SKILL.md`](./appstore/SKILL.md)。适合按 App ID 和国家/地区抓取用户评论并生成工作簿。
 
-```text
-小红书全量评论明细
-非大陆有效评论明细
-产品课程有效评论明细
-产品非大陆有效评论
-小红书笔记线索
-评论总结
-```
+## 交付物规范
 
-## Facebook Opinion Crawler
+每次舆情采集建议交付：
 
-`facebook-opinion-crawler` 是用于 Facebook 舆论评论采集的 Codex Skill。
+- 原始来源记录：搜索词、帖子/笔记/App 链接、抓取时间、平台限制。
+- 评论明细：作者、时间、地区或来源、内容、链接、去重键。
+- 有效评论：剔除空白、表情、无意义短回复后的可分析评论。
+- 汇总分析：数量、情绪、主题、代表性原文、风险点、限制说明。
+- 可复盘说明：哪些内容因权限、平台过滤、删除或风控无法保证完整。
 
-它适合在品牌、产品、广告投放、明星/KOL 合作帖、官方主页、家长社群、投诉群等场景下，使用 OpenCLI 从已登录的 Chrome/Facebook 环境中检索帖子、展开隐藏评论、提取评论明细，并整理成可用于 Excel 分析的数据。
+## 安全边界
 
-### 主要作用
+本仓库只保存可公开的 Skill、脚本、字段规则、示例配置和方法文档。
 
-- 按品牌词、产品词、投放关键词、明星/KOL 名称、社群讨论词扩展 Facebook 搜索。
-- 抓取公开帖子、视频、Reels、官方主页、小组讨论中的评论。
-- 使用后台模式运行 OpenCLI，尽量不影响用户正常使用电脑。
-- 精准点击评论区的“查看更多评论”，尝试获取被折叠或未展开的评论。
-- 从页面 DOM 和 Facebook GraphQL 网络响应中提取评论作者、时间、内容、评论链接等字段。
-- 对评论去重、过滤无效内容，并为后续情绪/主题分类和 Excel 汇总提供结构化数据。
-- 明确记录 Facebook 权限、排序、删除、过滤导致的不可见评论限制。
+不得提交：
 
-### 什么时候使用
+- 平台账号、密码、Cookie、Token、私钥、验证码、会话文件。
+- 未脱敏的客户、学生、家长、供应商、订单、合同、报价、营收等业务数据。
+- 原始导出表格、真实评论工作簿、截图、录屏、日志、浏览器缓存。
+- 包含账号信息或内部路径的调试输出。
 
-当用户提出类似需求时，应使用这个 Skill：
+更多规则见 [`SECURITY.md`](./SECURITY.md)。
 
-- “帮我抓 Facebook 上关于某个品牌/产品的评论。”
-- “继续扩展明星合作帖下面的评论。”
-- “把隐藏评论、折叠评论也尽量拿下来。”
-- “用 OpenCLI 后台爬 Facebook，不要影响我用电脑。”
-- “把 Facebook 舆论整理成 Excel 明细和总结。”
-- “查找港澳台地区 Facebook 上关于课程、教育产品、广告投放的用户反馈。”
+## 质量状态
 
-### 使用前提
+当前仓库已经具备：
 
-需要满足以下条件：
+- 三个明确平台 Skill。
+- 每个 Skill 均有 `SKILL.md`、参考文档和脚本入口。
+- 平台限制和数据规则已写入各 Skill。
 
-- 本机已安装并可运行 `opencli`。
-- Chrome 已登录目标 Facebook 账号。
-- OpenCLI Browser Bridge 扩展已连接。
-- 采集时建议使用：
+下一步建议：
 
-```bash
-OPENCLI_WINDOW=background
-OPENCLI_BROWSER_COMMAND_TIMEOUT=180
-```
+- 为输出工作簿统一字段模板。
+- 增加最小 smoke test，验证脚本能读取配置并输出结构化错误。
+- 增加 `CHANGELOG.md`，记录每次 Skill 能力变化。
 
-说明：部分 OpenCLI 版本没有真正的 `--headless` 参数，后台模式是当前更稳定的不打扰方案。
-
-### Skill 位置
-
-核心 Skill 文件在：
-
-```text
-facebook/SKILL.md
-```
-
-辅助文件：
-
-```text
-facebook/scripts/opencli_facebook_expand_comments.mjs
-facebook/references/facebook-opencli-playbook.md
-facebook/agents/openai.yaml
-```
-
-### 基本流程
-
-1. 用品牌词和相关关键词搜索 Facebook：
-
-```bash
-OPENCLI_WINDOW=background OPENCLI_BROWSER_COMMAND_TIMEOUT=180 \
-opencli facebook search 'VIP THINK 品牌合作' --limit 50 -f json > search_brand_collab.json
-```
-
-2. 打开高价值帖子并提取可见评论。
-
-3. 对评论数缺口大的帖子执行隐藏评论展开：
-
-```bash
-node facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
-```
-
-4. 将提取结果汇总到 Excel：
-
-- 全量评论明细
-- 有效评论明细
-- 帖子线索
-- 评论总结
-
-### 隐藏评论展开脚本
-
-准备 `targets.json`：
-
-```json
-[
-  {
-    "slug": "jinny-20250708",
-    "url": "https://www.facebook.com/jinnyngofficial/videos/1266725671470430/",
-    "outFile": "data/facebook_expanded/comments_jinny_20250708_hidden.json",
-    "maxRounds": 8
-  }
-]
-```
-
-运行：
-
-```bash
-node facebook/scripts/opencli_facebook_expand_comments.mjs targets.json
-```
-
-脚本会自动：
-
-- 后台打开帖子
-- 等待页面加载
-- 定位评论区的“查看更多评论”
-- 循环点击并等待新增评论
-- 保存评论 JSON
-- 保存页面 state 和 network trace 便于审计
-- 结束后关闭 OpenCLI session
-
-### 注意事项
-
-- Facebook 搜索页显示的评论数不一定等于详情页可抓到的评论数。
-- 即使成功展开 GraphQL 分页，也可能仍有评论因权限、删除、过滤、排序策略不可见。
-- 不要盲点“查看全部”，它可能是通知、排序或其它控件，不一定是评论展开按钮。
-- 最终交付时应在总结中写明“当前登录态可见”和“隐藏评论处理结果”。
-
-### 典型输出
-
-建议最终输出为 Excel，包含：
-
-```text
-Facebook全量评论明细
-Facebook有效评论明细
-Facebook帖子线索
-评论总结
-```
-
-评论明细建议字段：
-
-```text
-平台区域, 市场, 来源类型, 帖子作者, 帖子标题, 帖子日期, 帖子链接,
-内容类型, 评论作者, 评论时间, 评论内容, 情绪, 主题, 是否有效,
-评论链接, 抓取备注
-```
+质量复盘见 [`docs/QUALITY_REVIEW.md`](./docs/QUALITY_REVIEW.md)。

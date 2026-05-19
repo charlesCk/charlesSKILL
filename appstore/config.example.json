@@ -1,0 +1,27 @@
+{
+  "baseDir": "/absolute/workspace",
+  "rawDir": "data/appstore_YYYYMMDD",
+  "outFile": "outputs/appstore_reviews_YYYYMMDD.xlsx",
+  "apps": [
+    {
+      "appId": "1387156850",
+      "appKey": "student",
+      "appName": "示例学生端 App"
+    }
+  ],
+  "countries": [
+    {
+      "code": "cn",
+      "name": "中国大陆"
+    },
+    {
+      "code": "hk",
+      "name": "中国香港"
+    },
+    {
+      "code": "us",
+      "name": "美国"
+    }
+  ],
+  "fallbackFiles": {}
+}

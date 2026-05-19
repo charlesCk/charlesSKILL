@@ -1,0 +1,53 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.token
+*.secret
+
+# Local config
+config/local.*
+config/private.*
+secrets/
+
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+.next/
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+
+# Raw platform data and private exports
+data/
+outputs/
+exports/
+downloads/
+private/
+*.xlsx
+*.xls
+*.csv
+*.tsv
+*.zip
+*.7z
+*.rar
+
+# Logs and traces
+*.log
+trace/
+traces/
+playwright-report/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
