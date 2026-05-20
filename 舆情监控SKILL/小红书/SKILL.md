@@ -75,7 +75,7 @@ Config JSON:
 
 Run:
 ```bash
-node 小红书/scripts/opencli_xiaohongshu_collect_comments.mjs config.json
+node 舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs config.json
 ```
 
 The script writes search result JSON, `xhs_leads.json`, note JSON, comment JSON, and `xhs_collect_progress.json`.

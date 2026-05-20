@@ -11,20 +11,28 @@ const requiredFiles = [
   "CHANGELOG.md",
   "docs/QUALITY_REVIEW.md",
   "docs/OUTPUT_FIELD_TEMPLATE.md",
-  "facebook/SKILL.md",
-  "facebook/targets.example.json",
-  "facebook/scripts/opencli_facebook_expand_comments.mjs",
-  "小红书/SKILL.md",
-  "小红书/config.example.json",
-  "小红书/scripts/opencli_xiaohongshu_collect_comments.mjs",
-  "appstore/SKILL.md",
-  "appstore/config.example.json",
-  "appstore/scripts/appstore_reviews_workbook.mjs",
+  "商务SKILL/README.md",
+  "商务SKILL/seeyon-contract-draft/SKILL.md",
+  "商务SKILL/seeyon-contract-draft/agents/openai.yaml",
+  "商务SKILL/seeyon-contract-draft/references/config.example.json",
+  "商务SKILL/seeyon-contract-draft/references/field-checklist.md",
+  "商务SKILL/seeyon-contract-draft/scripts/create_seeyon_contract_draft.mjs",
+  "舆情监控SKILL/README.md",
+  "舆情监控SKILL/facebook/SKILL.md",
+  "舆情监控SKILL/facebook/targets.example.json",
+  "舆情监控SKILL/facebook/scripts/opencli_facebook_expand_comments.mjs",
+  "舆情监控SKILL/小红书/SKILL.md",
+  "舆情监控SKILL/小红书/config.example.json",
+  "舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs",
+  "舆情监控SKILL/appstore/SKILL.md",
+  "舆情监控SKILL/appstore/config.example.json",
+  "舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs",
   "examples/sample-opinion-summary.json",
-  "projects/codex-work-progress/README.md",
-  "projects/codex-work-progress/docs/progress-log.md",
-  "projects/codex-work-progress/docs/reusable-assets.md",
-  "projects/codex-work-progress/docs/reviewer-notes.md"
+  "工作进展/README.md",
+  "工作进展/codex-work-progress/README.md",
+  "工作进展/codex-work-progress/docs/progress-log.md",
+  "工作进展/codex-work-progress/docs/reusable-assets.md",
+  "工作进展/codex-work-progress/docs/reviewer-notes.md"
 ];
 
 function fail(message) {
@@ -46,17 +54,25 @@ for (const file of requiredFiles) {
   if (!fs.existsSync(path.join(root, file))) fail(`missing required file: ${file}`);
 }
 
-const facebookTargets = readJson("facebook/targets.example.json");
+const seeyonConfig = readJson("商务SKILL/seeyon-contract-draft/references/config.example.json");
+if (!seeyonConfig?.baseUrl || !seeyonConfig?.values) {
+  fail("seeyon contract config example must include baseUrl and values");
+}
+if (/^H\d{7}$/i.test(seeyonConfig.username) || /^\d{8,}$/.test(seeyonConfig.password)) {
+  fail("seeyon config example must not contain real-looking credentials");
+}
+
+const facebookTargets = readJson("舆情监控SKILL/facebook/targets.example.json");
 if (!Array.isArray(facebookTargets) || facebookTargets.length === 0) {
   fail("facebook/targets.example.json must be a non-empty array");
 }
 
-const xhsConfig = readJson("小红书/config.example.json");
+const xhsConfig = readJson("舆情监控SKILL/小红书/config.example.json");
 if (!Array.isArray(xhsConfig?.queries) || xhsConfig.queries.length === 0) {
   fail("小红书/config.example.json must include non-empty queries");
 }
 
-const appstoreConfig = readJson("appstore/config.example.json");
+const appstoreConfig = readJson("舆情监控SKILL/appstore/config.example.json");
 if (!Array.isArray(appstoreConfig?.apps) || appstoreConfig.apps.length === 0) {
   fail("appstore/config.example.json must include non-empty apps");
 }
@@ -70,9 +86,10 @@ for (const section of ["source_records", "comment_details", "summary", "limitati
 }
 
 const scripts = [
-  "facebook/scripts/opencli_facebook_expand_comments.mjs",
-  "小红书/scripts/opencli_xiaohongshu_collect_comments.mjs",
-  "appstore/scripts/appstore_reviews_workbook.mjs",
+  "商务SKILL/seeyon-contract-draft/scripts/create_seeyon_contract_draft.mjs",
+  "舆情监控SKILL/facebook/scripts/opencli_facebook_expand_comments.mjs",
+  "舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs",
+  "舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs",
   "tests/smoke_check.mjs"
 ];
 

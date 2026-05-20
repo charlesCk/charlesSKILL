@@ -90,7 +90,7 @@ Config JSON:
 
 Run:
 ```bash
-node appstore/scripts/appstore_reviews_workbook.mjs config.json
+node 舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs config.json
 ```
 
 The script writes raw JSON files and exports a polished `.xlsx` workbook.

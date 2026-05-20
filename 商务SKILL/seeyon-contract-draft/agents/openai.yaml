@@ -1,0 +1,4 @@
+interface:
+  display_name: "Seeyon Contract Draft"
+  short_description: "Create Seeyon OA contract drafts from contract files"
+  default_prompt: "Use $seeyon-contract-draft to read a contract file and create a Seeyon OA contract application draft with runtime-provided credentials."

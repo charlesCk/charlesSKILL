@@ -4,6 +4,36 @@ This log is written for GitHub-based weekly reporting. It focuses on what change
 
 ## 2026-05-20
 
+### Added Business Contract Draft Skill
+
+Created a public-safe Seeyon OA contract draft skill:
+
+- `商务SKILL/seeyon-contract-draft/SKILL.md`
+- `商务SKILL/seeyon-contract-draft/references/config.example.json`
+- `商务SKILL/seeyon-contract-draft/references/field-checklist.md`
+- `商务SKILL/seeyon-contract-draft/scripts/create_seeyon_contract_draft.mjs`
+
+Business value:
+
+- Turns a fragile manual OA contract entry process into a reusable draft-only workflow.
+- Requires each future user to provide their own OA account and contract file at runtime.
+- Captures hard-won validation rules for amount carry-over, RMB exchange rate, finance amount, and handler/self fields.
+- Keeps credentials, personal data, contracts, screenshots, and OA links out of Git.
+
+### Reorganized Repository Categories
+
+Moved assets into clearer business-facing folders:
+
+- `商务SKILL/`
+- `舆情监控SKILL/`
+- `工作进展/`
+
+Business value:
+
+- Makes the GitHub repository easier to scan by capability area.
+- Keeps crawler skills separate from internal business-process automation.
+- Keeps progress evidence in its own folder for weekly review.
+
 ### Strengthened Reviewability
 
 Added public-safe assets that make the repository easier to scan and verify:
@@ -38,20 +68,20 @@ Business value:
 
 Evidence:
 
-- `facebook/SKILL.md`
-- `小红书/SKILL.md`
-- `appstore/SKILL.md`
+- `舆情监控SKILL/facebook/SKILL.md`
+- `舆情监控SKILL/小红书/SKILL.md`
+- `舆情监控SKILL/appstore/SKILL.md`
 
 ### Added Script Entrypoints
 
 Added platform scripts and example configs:
 
-- `facebook/scripts/opencli_facebook_expand_comments.mjs`
-- `小红书/scripts/opencli_xiaohongshu_collect_comments.mjs`
-- `appstore/scripts/appstore_reviews_workbook.mjs`
-- `facebook/targets.example.json`
-- `小红书/config.example.json`
-- `appstore/config.example.json`
+- `舆情监控SKILL/facebook/scripts/opencli_facebook_expand_comments.mjs`
+- `舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs`
+- `舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs`
+- `舆情监控SKILL/facebook/targets.example.json`
+- `舆情监控SKILL/小红书/config.example.json`
+- `舆情监控SKILL/appstore/config.example.json`
 
 Business value:
 
@@ -75,7 +105,7 @@ Business value:
 
 ### Added Weekly Report Handoff
 
-Added `projects/codex-work-progress/` so weekly scanners can understand the work story.
+Added `工作进展/codex-work-progress/` so weekly scanners can understand the work story.
 
 Business value:
 

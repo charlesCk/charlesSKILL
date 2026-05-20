@@ -1,28 +1,26 @@
 # charlesSKILL
 
-面向业务舆情与用户反馈采集的 Codex Skill 仓库。
+面向业务流程提效、舆情监控和工作进展沉淀的 Codex Skill 仓库。
 
-本仓库沉淀三类可复用能力：Facebook 舆论评论采集、小红书舆论评论采集、App Store 评论采集。目标不是把原始数据堆到 GitHub，而是把可复用的采集流程、字段规则、去重逻辑、限制说明和交付物规范整理成团队可以复用的 Skill。
-
-另外，`projects/codex-work-progress/` 用于给团队 AI 周报扫描提供公开安全的进展说明：记录 Codex 帮助完成了什么、业务价值在哪里、哪些能力变得更可复用，以及哪些本机私有信息不会上传。
-
-## 业务价值
-
-这些 Skill 主要服务以下场景：
-
-- 评估品牌、课程、App 或投放活动在公开平台上的用户反馈。
-- 快速汇总 Facebook、小红书、App Store 的评论明细和可复盘证据。
-- 为市场、投放、商务、产品和教学团队提供结构化舆情素材。
-- 把一次性人工搜索和复制，沉淀成可重复运行、可审计、可交接的工作流。
+本仓库保存可复用的 Skill、脚本、字段规则、示例配置和公开安全说明。它不保存真实账号、密码、合同、客户资料、原始导出、截图、浏览器缓存或运行日志。
 
 ## 仓库地图
 
-| Skill | 适用平台 | 核心产出 | 入口 |
-| --- | --- | --- | --- |
-| Facebook Opinion Crawler | Facebook 帖子、视频、Reels、主页、小组讨论 | 评论明细、有效评论、线索清单、限制说明 | [`facebook/SKILL.md`](./facebook/SKILL.md) |
-| Xiaohongshu Opinion Crawler | 小红书 / Rednote 笔记和评论 | 全量评论、非大陆有效评论、产品课程相关评论、笔记线索 | [`小红书/SKILL.md`](./小红书/SKILL.md) |
-| App Store Opinion Crawler | Apple App Store / iTunes RSS | App Store 评论明细、地区汇总、抓取源记录、评论总结 | [`appstore/SKILL.md`](./appstore/SKILL.md) |
-| Codex Work Progress | AI 周报 / GitHub 进展扫描 | 工作进展、能力提升、可复用资产、安全边界 | [`projects/codex-work-progress/README.md`](./projects/codex-work-progress/README.md) |
+| 分类 | 内容 | 入口 |
+| --- | --- | --- |
+| 商务SKILL | 致远 OA 合同草稿自动化 | [`商务SKILL/README.md`](./商务SKILL/README.md) |
+| 舆情监控SKILL | Facebook、小红书、App Store 舆情/评论采集 | [`舆情监控SKILL/README.md`](./舆情监控SKILL/README.md) |
+| 工作进展 | GitHub 周报和团队复盘可读的进展说明 | [`工作进展/README.md`](./工作进展/README.md) |
+
+## Skill 清单
+
+| Skill | 业务场景 | 入口 |
+| --- | --- | --- |
+| Seeyon Contract Draft | 根据合同文件和运行时账号，在致远 OA 创建合同申请草稿，保存待发并校验金额、汇率、经办人等关键字段 | [`商务SKILL/seeyon-contract-draft/SKILL.md`](./商务SKILL/seeyon-contract-draft/SKILL.md) |
+| Facebook Opinion Crawler | 采集 Facebook 帖子、视频、Reels、主页、小组讨论评论 | [`舆情监控SKILL/facebook/SKILL.md`](./舆情监控SKILL/facebook/SKILL.md) |
+| Xiaohongshu Opinion Crawler | 采集小红书 / Rednote 笔记和评论，侧重海外/港澳台信号 | [`舆情监控SKILL/小红书/SKILL.md`](./舆情监控SKILL/小红书/SKILL.md) |
+| App Store Opinion Crawler | 通过 Apple 公开接口采集 App Store 评论和地区汇总 | [`舆情监控SKILL/appstore/SKILL.md`](./舆情监控SKILL/appstore/SKILL.md) |
+| Codex Work Progress | 沉淀 AI 协作进展、可复用资产和安全边界 | [`工作进展/codex-work-progress/README.md`](./工作进展/codex-work-progress/README.md) |
 
 ## 目录结构
 
@@ -32,128 +30,78 @@ charlesSKILL/
   SECURITY.md
   CHANGELOG.md
   docs/
-    QUALITY_REVIEW.md
-    OUTPUT_FIELD_TEMPLATE.md
   examples/
-    sample-opinion-summary.json
   tests/
-    smoke_check.mjs
-  facebook/
-    targets.example.json
-    SKILL.md
-    agents/openai.yaml
-    references/facebook-opencli-playbook.md
-    scripts/opencli_facebook_expand_comments.mjs
-  小红书/
-    config.example.json
-    SKILL.md
-    agents/openai.yaml
-    references/xiaohongshu-opencli-playbook.md
-    scripts/opencli_xiaohongshu_collect_comments.mjs
-  appstore/
-    config.example.json
-    SKILL.md
-    agents/openai.yaml
-    references/appstore-rss-playbook.md
-    scripts/appstore_reviews_workbook.mjs
-  projects/
+  商务SKILL/
+    README.md
+    seeyon-contract-draft/
+      SKILL.md
+      agents/openai.yaml
+      references/config.example.json
+      references/field-checklist.md
+      scripts/create_seeyon_contract_draft.mjs
+  舆情监控SKILL/
+    README.md
+    facebook/
+    小红书/
+    appstore/
+  工作进展/
+    README.md
     codex-work-progress/
-      README.md
-      docs/progress-log.md
-      docs/reusable-assets.md
-      docs/reviewer-notes.md
 ```
 
 ## 使用前提
 
-不同平台依赖不同能力：
-
+- 商务 OA 自动化：需要用户每次提供 OA 地址、账号密码、合同文件和必要业务字段。账号密码只放在仓库外的临时配置中。
 - Facebook / 小红书：需要本机可运行 `opencli`，Chrome 已登录对应平台账号，并连接 OpenCLI Browser Bridge。
 - App Store：使用 Apple 公开 Search API 和 iTunes RSS，不依赖登录态。
-- Excel 交付：建议结合本地 Node.js / 表格处理工具生成 `.xlsx`，不要把真实导出的工作簿直接提交到仓库。
-
-常用后台采集环境变量：
-
-```bash
-OPENCLI_WINDOW=background
-OPENCLI_BROWSER_COMMAND_TIMEOUT=180
-```
-
-说明：部分 OpenCLI 版本没有 `--headless` 参数。当前更稳妥的低打扰方式是 `OPENCLI_WINDOW=background`。
+- Excel/文档交付：建议在本机私有输出目录生成，不要把真实交付物提交到仓库。
 
 ## 快速使用
+
+### 致远 OA 合同草稿
+
+```bash
+node 商务SKILL/seeyon-contract-draft/scripts/create_seeyon_contract_draft.mjs /tmp/seeyon-contract-config.json
+```
+
+配置形状见 [`商务SKILL/seeyon-contract-draft/references/config.example.json`](./商务SKILL/seeyon-contract-draft/references/config.example.json)。真实账号密码和合同路径必须放在仓库外。
 
 ### Facebook 评论采集
 
 ```bash
-node facebook/scripts/opencli_facebook_expand_comments.mjs facebook/targets.example.json
+node 舆情监控SKILL/facebook/scripts/opencli_facebook_expand_comments.mjs 舆情监控SKILL/facebook/targets.example.json
 ```
-
-输入示例见 [`facebook/SKILL.md`](./facebook/SKILL.md)。适合已有 Facebook 帖子 URL，需要尽量展开隐藏评论的任务。
 
 ### 小红书评论采集
 
 ```bash
-node 小红书/scripts/opencli_xiaohongshu_collect_comments.mjs 小红书/config.example.json
+node 舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs 舆情监控SKILL/小红书/config.example.json
 ```
-
-输入配置见 [`小红书/SKILL.md`](./小红书/SKILL.md)。适合从品牌词、课程词、地区词批量扩展笔记线索。
 
 ### App Store 评论采集
 
 ```bash
-node appstore/scripts/appstore_reviews_workbook.mjs appstore/config.example.json
+node 舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs 舆情监控SKILL/appstore/config.example.json
 ```
-
-输入配置见 [`appstore/SKILL.md`](./appstore/SKILL.md)。适合按 App ID 和国家/地区抓取用户评论并生成工作簿。
-
-## 交付物规范
-
-每次舆情采集建议交付：
-
-- 原始来源记录：搜索词、帖子/笔记/App 链接、抓取时间、平台限制。
-- 评论明细：作者、时间、地区或来源、内容、链接、去重键。
-- 有效评论：剔除空白、表情、无意义短回复后的可分析评论。
-- 汇总分析：数量、情绪、主题、代表性原文、风险点、限制说明。
-- 可复盘说明：哪些内容因权限、平台过滤、删除或风控无法保证完整。
-
-统一字段模板见 [`docs/OUTPUT_FIELD_TEMPLATE.md`](./docs/OUTPUT_FIELD_TEMPLATE.md)。公开安全的假样例见 [`examples/sample-opinion-summary.json`](./examples/sample-opinion-summary.json)。
 
 ## 质量检查
 
-提交前可以运行轻量 smoke check：
+提交前运行：
 
 ```bash
 node tests/smoke_check.mjs
 ```
 
-该检查只验证仓库结构、示例配置、假样例和脚本语法，不访问真实平台账号，也不读取本机私有数据。
+该检查只验证仓库结构、示例配置和脚本语法，不访问真实平台账号，也不读取本机私有数据。
 
 ## 安全边界
-
-本仓库只保存可公开的 Skill、脚本、字段规则、示例配置和方法文档。
 
 不得提交：
 
 - 平台账号、密码、Cookie、Token、私钥、验证码、会话文件。
 - 未脱敏的客户、学生、家长、供应商、订单、合同、报价、营收等业务数据。
-- 原始导出表格、真实评论工作簿、截图、录屏、日志、浏览器缓存。
-- 包含账号信息或内部路径的调试输出。
+- 原始导出表格、真实评论工作簿、合同附件、截图、录屏、日志、浏览器缓存。
+- 包含内部流程链接、账号信息或本机私有路径的调试输出。
 
 更多规则见 [`SECURITY.md`](./SECURITY.md)。
-
-## 质量状态
-
-当前仓库已经具备：
-
-- 三个明确平台 Skill。
-- 每个 Skill 均有 `SKILL.md`、参考文档和脚本入口。
-- 平台限制和数据规则已写入各 Skill。
-
-下一步建议：
-
-- 继续补充更接近真实交付格式的 fake sample workbook。
-- 将 smoke check 接入提交前检查或 GitHub Actions。
-- 为每个平台补一条端到端离线测试，避免依赖真实登录态。
-
-质量复盘见 [`docs/QUALITY_REVIEW.md`](./docs/QUALITY_REVIEW.md)。

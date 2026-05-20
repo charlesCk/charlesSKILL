@@ -20,11 +20,12 @@ Main business outcomes:
 
 | Area | Current asset | Value |
 | --- | --- | --- |
-| Facebook opinion collection | `facebook/SKILL.md`, `facebook/scripts/opencli_facebook_expand_comments.mjs` | Collect and expand public Facebook comment threads with reusable OpenCLI guidance. |
-| Xiaohongshu opinion collection | `小红书/SKILL.md`, `小红书/scripts/opencli_xiaohongshu_collect_comments.mjs` | Search notes, collect comments, and separate useful non-mainland/product-related signals. |
-| App Store review collection | `appstore/SKILL.md`, `appstore/scripts/appstore_reviews_workbook.mjs` | Collect public App Store reviews by app and country/region through Apple public endpoints. |
+| Seeyon OA contract drafting | `商务SKILL/seeyon-contract-draft/SKILL.md`, `商务SKILL/seeyon-contract-draft/scripts/create_seeyon_contract_draft.mjs` | Create draft-only contract applications from runtime-provided contracts and accounts, with strict verification rules. |
+| Facebook opinion collection | `舆情监控SKILL/facebook/SKILL.md`, `舆情监控SKILL/facebook/scripts/opencli_facebook_expand_comments.mjs` | Collect and expand public Facebook comment threads with reusable OpenCLI guidance. |
+| Xiaohongshu opinion collection | `舆情监控SKILL/小红书/SKILL.md`, `舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs` | Search notes, collect comments, and separate useful non-mainland/product-related signals. |
+| App Store review collection | `舆情监控SKILL/appstore/SKILL.md`, `舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs` | Collect public App Store reviews by app and country/region through Apple public endpoints. |
 | Repository governance | `README.md`, `SECURITY.md`, `.gitignore`, `docs/QUALITY_REVIEW.md` | Make the repository easier to evaluate, safer to publish, and more reusable for teammates. |
-| Weekly report handoff | `projects/codex-work-progress/` | Tell reviewers what changed, why it matters, and where the proof lives. |
+| Weekly report handoff | `工作进展/codex-work-progress/` | Tell reviewers what changed, why it matters, and where the proof lives. |
 
 ## Progress Highlights
 
@@ -54,8 +55,8 @@ For weekly review, scan in this order:
 1. Root `README.md` for the overall repository purpose and map.
 2. `docs/QUALITY_REVIEW.md` for quality criteria and next steps.
 3. Each platform `SKILL.md` for reusable workflow design.
-4. `projects/codex-work-progress/docs/progress-log.md` for latest work progress.
-5. `projects/codex-work-progress/docs/reusable-assets.md` for asset-level evidence.
+4. `工作进展/codex-work-progress/docs/progress-log.md` for latest work progress.
+5. `工作进展/codex-work-progress/docs/reusable-assets.md` for asset-level evidence.
 
 ## Public Safety Boundary
 
