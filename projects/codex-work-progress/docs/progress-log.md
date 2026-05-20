@@ -2,6 +2,24 @@
 
 This log is written for GitHub-based weekly reporting. It focuses on what changed, why it matters, and where the reusable evidence lives.
 
+## 2026-05-20
+
+### Strengthened Reviewability
+
+Added public-safe assets that make the repository easier to scan and verify:
+
+- `CHANGELOG.md`
+- `docs/OUTPUT_FIELD_TEMPLATE.md`
+- `examples/sample-opinion-summary.json`
+- `tests/smoke_check.mjs`
+
+Business value:
+
+- Weekly reviewers can see both activity and quality improvement.
+- Teammates can understand the expected output fields before running any platform crawler.
+- Fake samples show the deliverable shape while keeping real business exports out of Git.
+- Smoke checks reduce the risk of broken examples or syntax errors.
+
 ## 2026-05-19
 
 ### Built Platform Skills

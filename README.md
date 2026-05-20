@@ -30,8 +30,14 @@
 charlesSKILL/
   README.md
   SECURITY.md
+  CHANGELOG.md
   docs/
     QUALITY_REVIEW.md
+    OUTPUT_FIELD_TEMPLATE.md
+  examples/
+    sample-opinion-summary.json
+  tests/
+    smoke_check.mjs
   facebook/
     targets.example.json
     SKILL.md
@@ -111,6 +117,18 @@ node appstore/scripts/appstore_reviews_workbook.mjs appstore/config.example.json
 - 汇总分析：数量、情绪、主题、代表性原文、风险点、限制说明。
 - 可复盘说明：哪些内容因权限、平台过滤、删除或风控无法保证完整。
 
+统一字段模板见 [`docs/OUTPUT_FIELD_TEMPLATE.md`](./docs/OUTPUT_FIELD_TEMPLATE.md)。公开安全的假样例见 [`examples/sample-opinion-summary.json`](./examples/sample-opinion-summary.json)。
+
+## 质量检查
+
+提交前可以运行轻量 smoke check：
+
+```bash
+node tests/smoke_check.mjs
+```
+
+该检查只验证仓库结构、示例配置、假样例和脚本语法，不访问真实平台账号，也不读取本机私有数据。
+
 ## 安全边界
 
 本仓库只保存可公开的 Skill、脚本、字段规则、示例配置和方法文档。
@@ -134,8 +152,8 @@ node appstore/scripts/appstore_reviews_workbook.mjs appstore/config.example.json
 
 下一步建议：
 
-- 为输出工作簿统一字段模板。
-- 增加最小 smoke test，验证脚本能读取配置并输出结构化错误。
-- 增加 `CHANGELOG.md`，记录每次 Skill 能力变化。
+- 继续补充更接近真实交付格式的 fake sample workbook。
+- 将 smoke check 接入提交前检查或 GitHub Actions。
+- 为每个平台补一条端到端离线测试，避免依赖真实登录态。
 
 质量复盘见 [`docs/QUALITY_REVIEW.md`](./docs/QUALITY_REVIEW.md)。

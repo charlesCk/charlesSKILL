@@ -1,0 +1,92 @@
+{
+  "source_records": [
+    {
+      "platform": "App Store",
+      "query_or_target": "1234567890|us",
+      "source_url": "https://itunes.apple.com/us/rss/customerreviews/id=1234567890/sortBy=mostRecent/json",
+      "collected_at": "2026-05-20T10:00:00+08:00",
+      "collection_method": "appstore/scripts/appstore_reviews_workbook.mjs",
+      "status": "ok",
+      "limit_note": "Fake sample. Real review exports are not committed."
+    },
+    {
+      "platform": "Xiaohongshu",
+      "query_or_target": "example overseas math course",
+      "source_url": "https://www.xiaohongshu.com/",
+      "collected_at": "2026-05-20T10:05:00+08:00",
+      "collection_method": "小红书/scripts/opencli_xiaohongshu_collect_comments.mjs",
+      "status": "partial",
+      "limit_note": "Fake sample. Login state and raw browser captures are excluded."
+    }
+  ],
+  "comment_details": [
+    {
+      "platform": "App Store",
+      "source_id": "1234567890|us",
+      "source_title": "Example Learning App",
+      "source_url": "https://example.com/appstore-review-feed",
+      "comment_id": "fake-review-001",
+      "author_display": "public_user_a",
+      "published_at": "2026-05-19T12:30:00Z",
+      "region": "US",
+      "rating": 5,
+      "content": "The course reminders are clearer after the latest update.",
+      "language": "en",
+      "dedupe_key": "appstore|1234567890|fake-review-001",
+      "is_effective": "yes",
+      "sentiment": "positive",
+      "topic": "course experience",
+      "risk_tag": "",
+      "evidence_url": "https://example.com/review/fake-review-001"
+    },
+    {
+      "platform": "Xiaohongshu",
+      "source_id": "fake-note-001",
+      "source_title": "Overseas math course discussion",
+      "source_url": "https://example.com/xhs/fake-note-001",
+      "comment_id": "fake-comment-001",
+      "author_display": "public_user_b",
+      "published_at": "2026-05-19T15:20:00+08:00",
+      "region": "Hong Kong",
+      "rating": null,
+      "content": "I want to compare trial class scheduling and refund rules before signing up.",
+      "language": "en",
+      "dedupe_key": "xhs|fake-note-001|fake-comment-001",
+      "is_effective": "yes",
+      "sentiment": "question/suggestion",
+      "topic": "trial class and refund",
+      "risk_tag": "refund concern",
+      "evidence_url": "https://example.com/xhs/fake-note-001"
+    }
+  ],
+  "summary": {
+    "total_sources": 2,
+    "total_comments": 2,
+    "effective_comments": 2,
+    "top_topics": [
+      {
+        "topic": "course experience",
+        "count": 1
+      },
+      {
+        "topic": "trial class and refund",
+        "count": 1
+      }
+    ],
+    "sentiment_mix": {
+      "positive": 1,
+      "question/suggestion": 1,
+      "neutral": 0,
+      "negative": 0
+    },
+    "business_reading": "Fake sample shows how public comments can be converted into themes and next actions.",
+    "next_actions": [
+      "Use the same fields for Facebook, Xiaohongshu, and App Store outputs.",
+      "Keep real exports local and commit only fake examples."
+    ]
+  },
+  "limitations": [
+    "This file is synthetic and contains no real customer, student, parent, account, or platform data.",
+    "Real screenshots, workbooks, logs, and browser cache files must stay out of Git."
+  ]
+}
