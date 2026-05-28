@@ -1,0 +1,21 @@
+name: smoke-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run repository smoke check
+        run: node tests/smoke_check.mjs

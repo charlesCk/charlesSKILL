@@ -1,6 +1,6 @@
 # Progress Log
 
-This log is written for GitHub-based weekly reporting. It focuses on what changed, why it matters, and where the reusable evidence lives.
+This log is written for team review and project continuity. It focuses on what changed, why it matters, and where the reusable evidence lives.
 
 ## 2026-05-20
 
@@ -30,13 +30,13 @@ Moved assets into clearer business-facing folders:
 
 Business value:
 
-- Makes the GitHub repository easier to scan by capability area.
+- Makes the repository easier to review by capability area.
 - Keeps crawler skills separate from internal business-process automation.
-- Keeps progress evidence in its own folder for weekly review.
+- Keeps progress evidence in its own folder for later review.
 
 ### Strengthened Reviewability
 
-Added public-safe assets that make the repository easier to scan and verify:
+Added public-safe assets that make the repository easier to review and verify:
 
 - `CHANGELOG.md`
 - `docs/OUTPUT_FIELD_TEMPLATE.md`
@@ -45,7 +45,7 @@ Added public-safe assets that make the repository easier to scan and verify:
 
 Business value:
 
-- Weekly reviewers can see both activity and quality improvement.
+- Reviewers can see both activity and quality improvement.
 - Teammates can understand the expected output fields before running any platform crawler.
 - Fake samples show the deliverable shape while keeping real business exports out of Git.
 - Smoke checks reduce the risk of broken examples or syntax errors.
@@ -103,13 +103,13 @@ Business value:
 - Reduces public GitHub publishing risk.
 - Clarifies what is reusable and what must stay local.
 
-### Added Weekly Report Handoff
+### Added Progress Handoff
 
-Added `工作进展/codex-work-progress/` so weekly scanners can understand the work story.
+Added `工作进展/codex-work-progress/` so teammates can understand the work story.
 
 Business value:
 
-- Helps Liuya's AI weekly report task identify progress beyond raw commit counts.
+- Helps teammates identify progress beyond raw commit counts.
 - Shows business-facing progress, reusable assets, quality improvements, and safety limits in one place.
 
 ## Next Planned Improvements

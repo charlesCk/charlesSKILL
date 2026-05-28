@@ -1,6 +1,6 @@
 # Reviewer Notes
 
-These notes are for teammates who evaluate GitHub progress from the outside.
+These notes are for teammates who evaluate repository progress from the outside.
 
 ## What To Count As Progress
 
@@ -35,7 +35,7 @@ Useful questions:
 
 Current status:
 
-- Structure: strong enough for weekly scanning.
+- Structure: strong enough for team review.
 - README clarity: clear at root and per skill.
 - Security boundary: explicit.
 - Reusable tools: present for three platforms.

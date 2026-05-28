@@ -7,8 +7,10 @@ const root = path.resolve(import.meta.dirname, "..");
 
 const requiredFiles = [
   "README.md",
+  "PROJECTS.md",
   "SECURITY.md",
   "CHANGELOG.md",
+  ".github/workflows/smoke-check.yml",
   "docs/QUALITY_REVIEW.md",
   "docs/OUTPUT_FIELD_TEMPLATE.md",
   "商务SKILL/README.md",

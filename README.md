@@ -1,16 +1,28 @@
 # charlesSKILL
 
-面向业务流程提效、舆情监控和工作进展沉淀的 Codex Skill 仓库。
+面向业务流程提效、公开舆情采集和 AI 协作沉淀的 Codex Skill 项目组合。
 
 本仓库保存可复用的 Skill、脚本、字段规则、示例配置和公开安全说明。它不保存真实账号、密码、合同、客户资料、原始导出、截图、浏览器缓存或运行日志。
+
+## 当前定位
+
+这个仓库不是零散脚本集合，而是三条业务线的可复用资产库：
+
+| 业务线 | 已沉淀内容 | 业务价值 |
+| --- | --- | --- |
+| 业务流程自动化 | 致远 OA 合同草稿 Skill、字段清单、运行脚本 | 把重复录入流程变成可复用、可校验、可交接的草稿生成流程 |
+| 公开舆情与用户反馈 | Facebook、小红书、App Store 采集 Skill 和脚本 | 帮助市场、产品、运营更快获得公开评论证据和反馈摘要 |
+| AI 协作沉淀与治理 | 进展记录、安全边界、质量检查、示例输出 | 让团队能看懂产出、复用资产，并避免把私有数据放进 Git |
 
 ## 仓库地图
 
 | 分类 | 内容 | 入口 |
 | --- | --- | --- |
+| 项目总览 | 三条业务线、项目状态、维护规则 | [`PROJECTS.md`](./PROJECTS.md) |
 | 商务SKILL | 致远 OA 合同草稿自动化 | [`商务SKILL/README.md`](./商务SKILL/README.md) |
 | 舆情监控SKILL | Facebook、小红书、App Store 舆情/评论采集 | [`舆情监控SKILL/README.md`](./舆情监控SKILL/README.md) |
-| 工作进展 | GitHub 周报和团队复盘可读的进展说明 | [`工作进展/README.md`](./工作进展/README.md) |
+| 工作进展 | 团队复盘、交接和能力沉淀说明 | [`工作进展/README.md`](./工作进展/README.md) |
+| 质量与安全 | 输出字段模板、质量评估、安全规则、smoke check | [`docs/QUALITY_REVIEW.md`](./docs/QUALITY_REVIEW.md) |
 
 ## Skill 清单
 
@@ -27,8 +39,10 @@
 ```text
 charlesSKILL/
   README.md
+  PROJECTS.md
   SECURITY.md
   CHANGELOG.md
+  .github/workflows/
   docs/
   examples/
   tests/
@@ -94,6 +108,8 @@ node tests/smoke_check.mjs
 ```
 
 该检查只验证仓库结构、示例配置和脚本语法，不访问真实平台账号，也不读取本机私有数据。
+
+GitHub Actions 也会在提交后运行同样的 smoke check，确保公开仓库里的示例和脚本入口没有断。
 
 ## 安全边界
 

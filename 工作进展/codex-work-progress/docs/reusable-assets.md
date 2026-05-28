@@ -28,7 +28,7 @@ This file lists the current reusable assets in `charlesSKILL` and explains how t
 | `SECURITY.md` | Define public repository safety rules. |
 | `.gitignore` | Keep local credentials, generated data, logs, and raw outputs out of Git. |
 | `docs/QUALITY_REVIEW.md` | Map the repository to quality criteria and improvement roadmap. |
-| `工作进展/codex-work-progress/` | Provide scan-friendly progress evidence for weekly GitHub review. |
+| `工作进展/codex-work-progress/` | Provide review-friendly progress evidence for team handoff. |
 
 ## Current Reuse Level
 
@@ -39,7 +39,7 @@ This file lists the current reusable assets in `charlesSKILL` and explains how t
 | Xiaohongshu | Medium | Workflow and script exist; needs smoke test and sample output. |
 | App Store | Medium-high | Uses public endpoints; easiest to verify and reuse. |
 | Repository governance | High | README, security boundary, quality review, and ignore rules are in place. |
-| Weekly report visibility | Medium-high | Progress handoff now exists; future commits should update `progress-log.md`. |
+| Team review visibility | Medium-high | Progress handoff now exists; future commits should update `progress-log.md`. |
 
 ## How Reviewers Should Interpret This Repository
 

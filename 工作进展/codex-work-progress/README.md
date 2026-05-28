@@ -1,8 +1,8 @@
 # Codex Work Progress
 
-This directory is a public-safe progress handoff for the AI weekly report workflow.
+This directory is a public-safe progress handoff for team review and project continuity.
 
-It summarizes what Charles has built with Codex, where the reusable assets live, what improved during the latest work cycle, and which private runtime details are intentionally excluded. It is designed for teammates who scan GitHub activity, especially the AI weekly report process, to understand work progress without needing access to local Codex sessions or private business data.
+It summarizes what Charles has built with Codex, where the reusable assets live, what improved during the latest work cycle, and which private runtime details are intentionally excluded. It is designed for teammates to understand work progress without needing access to local Codex sessions or private business data.
 
 ## Business Purpose
 
@@ -14,7 +14,7 @@ Main business outcomes:
 - Platform-specific collection rules are written as skills instead of staying in one-off chat history.
 - Outputs are shaped for later reporting: source records, comment details, useful comments, summary analysis, and limitation notes.
 - Public repository safety is improved through clear security boundaries, examples, and ignore rules.
-- GitHub progress becomes easier for the team weekly report to scan and compare.
+- Repository progress becomes easier for teammates to review and reuse.
 
 ## Current Deliverables
 
@@ -25,7 +25,7 @@ Main business outcomes:
 | Xiaohongshu opinion collection | `舆情监控SKILL/小红书/SKILL.md`, `舆情监控SKILL/小红书/scripts/opencli_xiaohongshu_collect_comments.mjs` | Search notes, collect comments, and separate useful non-mainland/product-related signals. |
 | App Store review collection | `舆情监控SKILL/appstore/SKILL.md`, `舆情监控SKILL/appstore/scripts/appstore_reviews_workbook.mjs` | Collect public App Store reviews by app and country/region through Apple public endpoints. |
 | Repository governance | `README.md`, `SECURITY.md`, `.gitignore`, `docs/QUALITY_REVIEW.md` | Make the repository easier to evaluate, safer to publish, and more reusable for teammates. |
-| Weekly report handoff | `工作进展/codex-work-progress/` | Tell reviewers what changed, why it matters, and where the proof lives. |
+| Progress handoff | `工作进展/codex-work-progress/` | Tell reviewers what changed, why it matters, and where the proof lives. |
 
 ## Progress Highlights
 
@@ -36,7 +36,7 @@ Recent work converted the repository from a small set of scripts into a more leg
 - Reorganized the repository so each skill has a consistent local shape.
 - Rewrote the root README around business value, repository map, quick usage, deliverable standard, and security boundaries.
 - Added a quality review document that maps the repository to evaluation criteria.
-- Added this progress handoff so GitHub weekly scanning can see the work story, not only commit messages.
+- Added this progress handoff so teammates can see the work story, not only commit messages.
 
 ## Improvement Signals
 
@@ -46,11 +46,11 @@ What improved compared with the initial state:
 - From platform-specific trial work to documented workflows.
 - From unclear public boundary to explicit security rules.
 - From script-only assets to business-facing deliverable standards.
-- From scattered progress evidence to a scan-friendly progress folder.
+- From scattered progress evidence to a review-friendly progress folder.
 
-## Recommended Scan Order
+## Recommended Review Order
 
-For weekly review, scan in this order:
+For team review, read in this order:
 
 1. Root `README.md` for the overall repository purpose and map.
 2. `docs/QUALITY_REVIEW.md` for quality criteria and next steps.

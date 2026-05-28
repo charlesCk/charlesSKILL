@@ -2,7 +2,7 @@
 
 This template defines the recommended public-safe output structure for comment, review, and public opinion collection tasks.
 
-The goal is to make Facebook, Xiaohongshu, and App Store outputs easier to compare in weekly reports and easier to hand off to business teams.
+The goal is to make Facebook, Xiaohongshu, and App Store outputs easier to compare across projects and easier to hand off to business teams.
 
 ## Required Sheets Or Sections
 
