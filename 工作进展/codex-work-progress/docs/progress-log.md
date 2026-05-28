@@ -2,6 +2,49 @@
 
 This log is written for team review and project continuity. It focuses on what changed, why it matters, and where the reusable evidence lives.
 
+## 2026-05-28
+
+### Added Weekly AI Progress Summary
+
+Created a public-safe weekly progress summary:
+
+- `工作进展/codex-work-progress/docs/weekly-ai-progress-2026-05-28.md`
+
+Business value:
+
+- Summarizes this week's AI work across business automation, business analysis, public opinion workflows, AI environment governance, and repository governance.
+- Converts Codex conversation outcomes into a readable team progress artifact.
+- Keeps credentials, internal raw data, private links, logs, screenshots, and raw session content out of Git.
+
+### Added Today's Project Entries
+
+Added public-safe entries for three GitHub projects:
+
+- `业务分析SKILL/kol-research-analysis/`
+- `业务分析SKILL/smartbi-weekly-reporting/`
+- `AI治理SKILL/local-ai-manager/`
+
+Business value:
+
+- Makes today's project work visible inside the main `charlesSKILL` portfolio.
+- Keeps private KOL material, BI maps, exports, and local scan results outside the public repository.
+
+### Reorganized Repository Portfolio
+
+Reframed the repository around five business lines:
+
+- Business process automation.
+- Business analysis and data tooling.
+- Public opinion and user feedback.
+- AI work environment governance.
+- AI work progress and governance.
+
+Business value:
+
+- Makes the repository easier to evaluate at a glance.
+- Gives each new project a clear location and safety boundary.
+- Uses smoke checks to reduce the chance of broken public examples.
+
 ## 2026-05-20
 
 ### Added Business Contract Draft Skill

@@ -44,7 +44,8 @@ const requiredFiles = [
   "工作进展/codex-work-progress/README.md",
   "工作进展/codex-work-progress/docs/progress-log.md",
   "工作进展/codex-work-progress/docs/reusable-assets.md",
-  "工作进展/codex-work-progress/docs/reviewer-notes.md"
+  "工作进展/codex-work-progress/docs/reviewer-notes.md",
+  "工作进展/codex-work-progress/docs/weekly-ai-progress-2026-05-28.md"
 ];
 
 function fail(message) {

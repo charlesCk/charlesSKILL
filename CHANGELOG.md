@@ -11,6 +11,7 @@ All notable public-safe changes to `charlesSKILL` are recorded here.
 - Added GitHub Actions smoke check workflow for public repository verification.
 - Added public-safe entries for today's GitHub projects: KOL research analysis, SmartBI weekly reporting, and Local AI Manager.
 - Expanded the repository map to five business lines: business automation, business analysis/data tooling, public opinion, AI environment governance, and AI work progress.
+- Added a public-safe weekly AI progress summary under `工作进展/codex-work-progress/docs/`.
 
 ## 2026-05-20
 

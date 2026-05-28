@@ -27,6 +27,10 @@ Main business outcomes:
 | Repository governance | `README.md`, `SECURITY.md`, `.gitignore`, `docs/QUALITY_REVIEW.md` | Make the repository easier to evaluate, safer to publish, and more reusable for teammates. |
 | Progress handoff | `工作进展/codex-work-progress/` | Tell reviewers what changed, why it matters, and where the proof lives. |
 
+## Latest Weekly Progress
+
+- [`docs/weekly-ai-progress-2026-05-28.md`](./docs/weekly-ai-progress-2026-05-28.md)
+
 ## Progress Highlights
 
 Recent work converted the repository from a small set of scripts into a more legible AI work asset library.
