@@ -5,10 +5,12 @@ All notable public-safe changes to `charlesSKILL` are recorded here.
 ## 2026-05-28
 
 - Added `PROJECTS.md` as the repository-level project portfolio and review entry.
-- Reframed the root README around three business lines: business process automation, public opinion/user feedback, and AI work governance.
+- Reframed the root README around five business lines: business automation, business analysis/data tooling, public opinion, AI environment governance, and AI work progress.
 - Updated quality review language to cover Seeyon contract drafting, public opinion tools, progress handoff, and GitHub Actions smoke checks.
 - Replaced internal review-process wording with team-review and project-continuity wording.
 - Added GitHub Actions smoke check workflow for public repository verification.
+- Added public-safe entries for today's GitHub projects: KOL research analysis, SmartBI weekly reporting, and Local AI Manager.
+- Expanded the repository map to five business lines: business automation, business analysis/data tooling, public opinion, AI environment governance, and AI work progress.
 
 ## 2026-05-20
 

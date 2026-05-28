@@ -13,7 +13,19 @@ Safety boundary:
 - Runtime OA address, account, password, and contract files must be supplied outside the repository.
 - The script creates and verifies drafts only; final submission remains a human decision.
 
-## 2. Public Opinion And User Feedback
+## 2. Business Analysis And Data Tooling
+
+| Project | Path | Value | Status |
+| --- | --- | --- | --- |
+| KOL Research Analysis | `业务分析SKILL/kol-research-analysis/` | Turns private KOL history review into a reusable analysis framework for material, authorization, acquisition, appointment, conversion, and regional comparison. | Public-safe framework and template are available; raw KOL data remains private. |
+| SmartBI Weekly Reporting | `业务分析SKILL/smartbi-weekly-reporting/` | Turns SmartBI reporting work into a reusable method for CLI validation, route lookup, read-only export, reporting, and writeback safety. | Public-safe workflow and security boundary are available; internal BI maps and exports remain private. |
+
+Safety boundary:
+
+- KOL source documents, names, quotations, costs, revenue, and meeting details stay outside Git.
+- SmartBI credentials, report IDs, internal route maps, exports, screenshots, and logs stay outside Git.
+
+## 3. Public Opinion And User Feedback
 
 | Project | Path | Value | Status |
 | --- | --- | --- | --- |
@@ -27,7 +39,17 @@ Safety boundary:
 - Real exports, screenshots, browser state, and platform credentials stay local.
 - Platform limits and incomplete data must be recorded in output limitations.
 
-## 3. AI Work Progress And Governance
+## 4. AI Work Environment Governance
+
+| Project | Path | Value | Status |
+| --- | --- | --- | --- |
+| Local AI Manager | `AI治理SKILL/local-ai-manager/` | Defines a local-first way to inspect AI workspace health, Codex context size, skill directories, automations, and basic security hygiene. | Public-safe project entry and context health-check method are available; local scan results remain private. |
+
+Safety boundary:
+
+- Codex raw sessions, local scan reports, environment values, auth files, and automation private configs stay outside Git.
+
+## 5. AI Work Progress And Governance
 
 | Project | Path | Value | Status |
 | --- | --- | --- | --- |
